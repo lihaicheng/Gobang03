@@ -3,9 +3,10 @@
 <mapper namespace="com.chao.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.chao.bean.User">
     <id column="uid" jdbcType="INTEGER" property="uid" />
-    <id column="username" jdbcType="VARCHAR" property="username" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="sign" jdbcType="VARCHAR" property="sign" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    uid, username, password, email
+    uid, username, password, email, sign
   </sql>
   <select id="selectByExample" parameterType="com.chao.bean.UserExample" resultMap="BaseResultMap">
     select
@@ -82,17 +83,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="com.chao.bean.UserKey" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from users
     where uid = #{uid,jdbcType=INTEGER}
-      and username = #{username,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.chao.bean.UserKey">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from users
     where uid = #{uid,jdbcType=INTEGER}
-      and username = #{username,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.chao.bean.UserExample">
     delete from users
@@ -102,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.chao.bean.User">
     insert into users (uid, username, password, 
-      email)
+      email, sign)
     values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR})
+      #{email,jdbcType=VARCHAR}, #{sign,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.chao.bean.User">
     insert into users
@@ -121,6 +120,9 @@
       <if test="email != null">
         email,
       </if>
+      <if test="sign != null">
+        sign,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="uid != null">
@@ -134,6 +136,9 @@
       </if>
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null">
+        #{sign,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -158,6 +163,9 @@
       <if test="record.email != null">
         email = #{record.email,jdbcType=VARCHAR},
       </if>
+      <if test="record.sign != null">
+        sign = #{record.sign,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -168,7 +176,8 @@
     set uid = #{record.uid,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=VARCHAR}
+      email = #{record.email,jdbcType=VARCHAR},
+      sign = #{record.sign,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -176,21 +185,27 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.chao.bean.User">
     update users
     <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
       </if>
+      <if test="sign != null">
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
     </set>
     where uid = #{uid,jdbcType=INTEGER}
-      and username = #{username,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.chao.bean.User">
     update users
-    set password = #{password,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR}
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
-      and username = #{username,jdbcType=VARCHAR}
   </update>
 </mapper>

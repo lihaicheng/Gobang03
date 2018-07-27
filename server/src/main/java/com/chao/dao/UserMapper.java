@@ -2,7 +2,6 @@ package com.chao.dao;
 
 import com.chao.bean.User;
 import com.chao.bean.UserExample;
-import com.chao.bean.UserKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,7 +10,7 @@ public interface UserMapper {
 
     int deleteByExample(UserExample example);
 
-    int deleteByPrimaryKey(UserKey key);
+    int deleteByPrimaryKey(Integer uid);
 
     int insert(User record);
 
@@ -19,7 +18,7 @@ public interface UserMapper {
 
     List<User> selectByExample(UserExample example);
 
-    User selectByPrimaryKey(UserKey key);
+    User selectByPrimaryKey(Integer uid);
 
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 

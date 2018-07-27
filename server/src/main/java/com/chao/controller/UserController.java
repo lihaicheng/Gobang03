@@ -44,9 +44,9 @@ public class UserController {
         Subject subject = SecurityUtils.getSubject();
         String username = (String) subject.getPrincipal();
 
+        //设置更新用户的用户名
         user.setUsername(username);
 
-        System.out.println("准备更新：" + user);
         //得到更新后的用户信息
         userService.updateUserByUsername(user);
         return Msg.success().add("user", user);
@@ -56,5 +56,20 @@ public class UserController {
     @RequestMapping(value = "/user2", method = RequestMethod.GET)
     public Msg getUser2() {
         return getUser();
+    }
+
+    /**
+     * 退出
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public Msg register(User user) {
+        if (userService.addUser(user)) {
+            return Msg.success().add("msg", user);
+        } else {
+            return Msg.fail().add("msg", user);
+        }
     }
 }

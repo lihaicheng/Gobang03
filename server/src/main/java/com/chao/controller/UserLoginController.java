@@ -1,23 +1,28 @@
 package com.chao.controller;
 
 import com.chao.bean.Msg;
+import com.chao.bean.User;
+import com.chao.service.UserService;
 import com.chao.utils.LoggerUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Map;
 
 /**
  * 用户登录控制
  */
 @Controller
 public class UserLoginController {
+
+    @Autowired
+    UserService userService;
 
     @ResponseBody
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
@@ -48,4 +53,6 @@ public class UserLoginController {
             return Msg.fail().add("logout", "退出出现错误！");
         }
     }
+
+
 }

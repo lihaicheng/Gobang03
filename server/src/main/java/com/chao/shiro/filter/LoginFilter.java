@@ -1,6 +1,5 @@
 package com.chao.shiro.filter;
 
-import com.chao.bean.User;
 import com.chao.utils.LoggerUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -36,7 +35,7 @@ public class LoginFilter extends AccessControlFilter {
                                       ServletResponse response, Object mappedValue) throws Exception {
 
         Subject subject = SecurityUtils.getSubject();
-        Object token =  subject.getPrincipal();
+        Object token = subject.getPrincipal();
 
         if (null != token || isLoginRequest(request, response)) {// && isEnabled()
             return Boolean.TRUE;
@@ -45,10 +44,9 @@ public class LoginFilter extends AccessControlFilter {
             Map<String, String> resultMap = new HashMap<String, String>();
             LoggerUtils.debug(getClass(), "当前用户没有登录，并且是Ajax请求！");
             resultMap.put("login_status", "300");
-            resultMap.put("message", "\u5F53\u524D\u7528\u6237\u6CA1\u6709\u767B\u5F55\uFF01");//当前用户没有登录！
+            resultMap.put("message", "当前用户没有登录！");//当前用户没有登录！
             ShiroFilterUtils.out(response, resultMap);
         }
-        System.out.println("LoginFilter FALSE");
         return Boolean.FALSE;
     }
 
@@ -56,7 +54,7 @@ public class LoginFilter extends AccessControlFilter {
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response)
             throws Exception {
         //保存Request和Response 到登录后的链接
-        //	saveRequestAndRedirectToLogin(request, response);
+        saveRequestAndRedirectToLogin(request, response);
         return Boolean.FALSE;
     }
 

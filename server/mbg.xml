@@ -26,12 +26,12 @@
         </javaTypeResolver>
 
         <!-- 指定JavaBean生成位置 -->
-        <javaModelGenerator targetPackage="com.chao.bean" targetProject=".\src\main\java">
+        <javaModalGenerator targetPackage="com.chao.bean" targetProject=".\src\main\java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="true"/>
             <!-- 清理前后的空格 -->
             <property name="trimStrings" value="true"/>
-        </javaModelGenerator>
+        </javaModalGenerator>
 
         <!-- 指定sql映射文件生成的位置 -->
         <sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\resources">

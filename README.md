@@ -5,6 +5,7 @@ Gobang03设计说明书
 系统构架：BS/CS混合构架
 
 采用技术：
+
 	Server端：使用RESTful风格，生成远程API接口
 Spring+SpringMVC+MyBatis+Shiro
 					Mybatis：MyBatis逆向工程

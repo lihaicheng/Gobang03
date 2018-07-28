@@ -1,3 +1,7 @@
+$(document).on("click", "#userdata_Tip", function () {
+    show_user_bar();
+});
+
 $(function () {
     var str = _settings.gobangDown;
     $("#code").empty();

@@ -14,7 +14,7 @@ $(document).ajaxError(function (event, xhr, options, exc) {
 //全局ajax发送前
 $(document).ajaxSend(function (event, xhr, options) {
     console.log(">>>> url: " + options.url);
-    console.log("data: " + options.data);
+    console.log("request data: " + options.data);
 });
 
 

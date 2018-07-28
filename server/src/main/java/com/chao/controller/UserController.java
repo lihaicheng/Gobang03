@@ -74,4 +74,15 @@ public class UserController {
             return Msg.fail().add("msg", user);
         }
     }
+
+    /**
+     * 退出
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/no", method = RequestMethod.POST)
+    public Msg noUser() {
+        return Msg.fail().add("msg", "用户未登录");
+    }
 }

@@ -4,7 +4,7 @@
  */
 
 //服务器api接口地址
-var webServer = "http://127.0.0.1:8080/server";
+var webServer = "http://localhost:8080/server";
 _settings = {
     gobangDown: "http://t.cn/RrXswvP",
     jdkDown: "http://down-www.newasp.net/pcdown/soft/yh/jre1.8x64.7z",

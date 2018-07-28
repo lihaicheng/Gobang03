@@ -1,7 +1,7 @@
 /*加载用户数据*/
 
 $(function () {
-   // getUserBar();
+    getUserBar();
     $(".loginOut").click(function () {
         loginOut();
     });
@@ -29,13 +29,12 @@ function getUserBar() {
     $.ajax({
         type: "get",
         url: _settings.api.user,
-        dataType: "json",
         success: function (result) {
             console.log(result);
             if (result.code == 100) { //登陆成功
                 var user = result.extend.user;
-                $("#navbar-user").show();
                 $("#navbar-user").find(".user-bar").text(user.username);
+                $("#navbar-user").show();
                 $("#navbar-login").hide();
             } else {
                 $("#navbar-user").hide();

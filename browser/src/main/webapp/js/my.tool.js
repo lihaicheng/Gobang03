@@ -1,12 +1,11 @@
 var myModal_div = "#myModal-div";
 var my_alertBox = "#my_alertBox";
+
 $(function () {
-    //存在模态框id则异步加载模态框
+    //存在模态框id,则异步加载模态框
     if ($(myModal_div).length > 0) {
         loadMyModal(myModal_div);
-        console.log("加载模态框")
     }
-
 
     //加载模态框数据,方法私有
     function loadMyModal(modal_div) {

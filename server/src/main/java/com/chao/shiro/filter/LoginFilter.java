@@ -7,6 +7,8 @@ import org.apache.shiro.web.filter.AccessControlFilter;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,14 +42,17 @@ public class LoginFilter extends AccessControlFilter {
         if (null != token || isLoginRequest(request, response)) {// && isEnabled()
             return Boolean.TRUE;
         }
-        System.out.println("当前请求："+request.getServerName());
-        if (ShiroFilterUtils.isAjax(request)) {// ajax请求
-            Map<String, String> resultMap = new HashMap<String, String>();
-            LoggerUtils.debug(getClass(), "当前用户没有登录，并且是Ajax请求！");
-            resultMap.put("login_status", "300");
-            resultMap.put("message", "当前用户没有登录！");//当前用户没有登录！
-            ShiroFilterUtils.out(response, resultMap);
-        }
+
+        System.out.println("当前请求：" + request.getServerName());
+        // 判断是否是ajax请求，但是，跨域请求时，无法正确判断，X-Requested-With: XMLHttpRequest
+        //if (ShiroFilterUtils.isAjax(request)) {//
+        Map<String, String> resultMap = new HashMap<String, String>();
+        LoggerUtils.debug(getClass(), "当前用户没有登录，并且是Ajax请求！");
+        resultMap.put("code", "200");
+        resultMap.put("msg", "当前用户没有登录！");//当前用户没有登录！
+        ShiroFilterUtils.out(response, resultMap);
+        //  }
+
         return Boolean.FALSE;
     }
 

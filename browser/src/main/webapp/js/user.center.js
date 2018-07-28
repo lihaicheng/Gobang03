@@ -5,7 +5,7 @@ $(function () {
 function getUser_center(user_div) {
     $.ajax({
         type: "GET",
-        url: _settings.apiServer + _settings.api.user,
+        url: _settings.api.user,
         success: function (result) {
             console.log(result);
             if (result.code == 100) { //登陆成功

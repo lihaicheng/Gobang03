@@ -1,7 +1,7 @@
 /*加载用户数据*/
 
 $(function () {
-    getUserBar();
+   // getUserBar();
     $(".loginOut").click(function () {
         loginOut();
     });
@@ -11,7 +11,7 @@ $(function () {
 function loginOut() {
     $.ajax({
         type: "get",
-        url: _settings.apiServer + _settings.api.logout,
+        url: _settings.api.logout,
         success: function (result) {
             console.log(result);
             if (result.code == 100) { //注销成功
@@ -28,7 +28,7 @@ function loginOut() {
 function getUserBar() {
     $.ajax({
         type: "get",
-        url: _settings.apiServer + _settings.api.user,
+        url: _settings.api.user,
         dataType: "json",
         success: function (result) {
             console.log(result);

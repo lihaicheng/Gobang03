@@ -10,11 +10,12 @@ var regPasswordNum = /[0-9]/;
 var check = [false, false, false];
 
 //提交注册
-function regAjax(from) {
+function regAjax() {
+    var reg_from=$("#regFrom");
     $.ajax({
         type: "POST",
-        url: _settings.apiServer + _settings.api.register,
-        data: from.serialize(),
+        url: _settings.api.register,
+        data: reg_from.serialize(),
         success: function (result) {
             console.log(result);
             if (result.code == 100) { //注册成功
@@ -33,8 +34,9 @@ function regAjax(from) {
 }
 
 // 用户名匹配
-$('.container').find('#username').change(usernameVar).blur(usernameVar);
+//$('.container').find('#username').change(usernameVar).blur(usernameVar);
 
+$('.container').find('#username').change(usernameVar);
 function usernameVar() {
     if (regUsername.test($(this).val())) {
         isHaveUsername($(this).val());
@@ -52,8 +54,12 @@ function usernameVar() {
 function isHaveUsername(username) {
     $.ajax({
         type: "post",
-        url: _settings.apiServer + _settings.api.check + "/username",
+        url: _settings.api.check + "/username",
         data: "username=" + username,
+        xhrFields: {
+            //允许跨域带上cookie
+            withCredentials: true
+        },
         success: function (result) {
             console.log(result);
             if (result.code == 100) { //账号未注册
@@ -105,7 +111,7 @@ $('#submit').click(function (e) {
     e.preventDefault();
     if (!check.every(function (value) {
         if (value == true) {
-            regAjax($(_settings.regFrom));
+            regAjax();
         }
     })) {
         for (key in check) {

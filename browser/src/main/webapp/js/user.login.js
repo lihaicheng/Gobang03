@@ -2,21 +2,19 @@
 用户登录相关
  */
 
-$(function () {
-    loginFrom("#loginFrom", "#login_btn");
-    fromVar("#loginFrom");
+var login_submit = "#login_btn";//登录按钮
+var login_form = "#loginFrom";//登录表单
+
+$(login_submit).click(function (event) {
+    event.preventDefault();
+    submit_disenable();
+    ajaxLogin();
 });
 
-function loginFrom(from, submit) {
-    $(submit).click(function () {
-        event.preventDefault();
-        submit_disenable(this);
-        ajaxLogin($(from), $(submit));
-    });
-}
+fromVar();
 
-function fromVar(from) {
-    $(from).validate({
+function fromVar() {
+    $(login_form).validate({
         rules: {
             username: {
                 required: true,
@@ -28,68 +26,71 @@ function fromVar(from) {
             }
         },
         messages: {
-            username: "请输入用户名",
+            username: {
+                required: "请输入用户名",
+                minlength: "用户名长度不能小于 3 位"
+            },
             password: {
                 required: "请输入密码",
-                minlength: "密码长度不能小于 5 个字母"
+                minlength: "密码长度不能小于 5 位"
             }
         }
     });
 }
 
-function ajaxLogin(from, submit) {
+function ajaxLogin() {
     $.ajax({
         type: "post",
-        url: _settings.apiServer + _settings.api.login,
-        data: from.serialize(),
+        url: _settings.api.login,
+        data: $(login_form).serialize(),
         dataType: "json",
         success: function (result) {
             console.log(result);
             if (result.code == 100) { //登陆成功
-                showLogin_success(from);
+                showLogin_success();
                 window.location.href = _settings.html.userCenter;
             } else {
-                showLogin_error(from);
+                showLogin_error();
             }
         },
-        error: function (result) {
-            showNet_error(from);
+        error: function () {
+            showNet_error();
         },
         complete: function () {
             // Handle the complete event
-            submit_enable(submit);
+            submit_enable();
         }
     });
 }
 
 var classes = "";//提交按钮新class
 var oldClasses = "";//提交按钮原class
-function submit_disenable(submit) {
-    oldClasses = submit.getAttribute("class");
+function submit_disenable() {
+    oldClasses = $(login_submit).attr("class");
     classes = oldClasses + " disabled";
-    submit.setAttribute("class", classes);
-    submit.innerHTML = "<i class='icon-refresh icon-spin'></i> 正在登陆...";
+    $(login_submit).attr("class", classes);
+    $(login_submit).html("<i class='icon-refresh icon-spin'></i> 正在登陆...");
 }
 
-function submit_enable(submit) {
-    submit.setAttribute("class", oldClasses);
-    submit.removeClass("disabled");
-    submit.html("登录");
+function submit_enable() {
+    $(login_submit).attr("class", oldClasses);
+    $(login_submit).removeClass("disabled");
+    $(login_submit).html("登录");
 }
 
-function showNet_error(parent) {
+function showNet_error() {
     var tips = "登录失败，请检查网络！";
-    alertBox(parent, tips, "warning")
+    alertBox(tips, "warning")
 }
 
-function showLogin_error(parent) {
+function showLogin_error() {
     var tips = "账号或密码错误，请重新输入！";
-    alertBox(parent, tips, "warning")
+    alertBox(tips, "warning")
 }
 
-function showLogin_success(parent) {
+function showLogin_success() {
     var tips = "登录成功，欢迎回来！";
-    alertBox(parent, tips, "success")
+    alertBox(tips, "success")
 }
 
 //JS操作cookies方法!

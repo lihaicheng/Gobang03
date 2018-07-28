@@ -1,4 +1,5 @@
 var myModal_div = "#myModal-div";
+var my_alertBox = "#my_alertBox";
 $(function () {
     //存在模态框id则异步加载模态框
     if ($(myModal_div).length > 0) {
@@ -16,15 +17,16 @@ $(function () {
 });
 
 /* 提示框 */
-function alertBox(parent, tip, color) {
-    var box = document.createElement("div");
-    box.setAttribute("id", "warningTip");
-    box.setAttribute("class", "alert alert-" + color + " alert-dismissible");
-    box.setAttribute("role", "alert");
-    box.innerHTML = "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><spanaria-hidden='true'>&times;</span></button>" + tip;
-
+function alertBox(tip, color) {
+    var box = $("<div></div>");
     $("#warningTip").remove();
-    $(parent).children(':first').before(box);
+
+    box.attr("id", "warningTip");
+    box.attr("class", "alert alert-" + color + " alert-dismissible");
+    box.attr("role", "alert");
+    box.html("<button type='button' class='close' data-dismiss='alert' aria-label='Close'><spanaria-hidden='true'>&times;</span></button>" + tip);
+
+    $(my_alertBox).html(box);
 }
 
 //模态框

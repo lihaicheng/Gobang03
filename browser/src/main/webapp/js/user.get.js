@@ -16,7 +16,7 @@ function getUserData() {
         url: _settings.api.user,
         success: function (result) {
             console.log(result);
-            if (result.code == 100) { //用户信息获取成功
+            if (result.code == 200) { //用户信息获取成功
                 userData = result.extend.user;
             }
         },
@@ -48,7 +48,7 @@ function loginOut() {
         url: _settings.api.logout,
         success: function (result) {
             console.log(result);
-            if (result.code == 100) { //注销成功
+            if (result.code == 200) { //注销成功
                 alert("注销成功！");
                 userData = "";
                 window.location.href = _settings.html.login;

@@ -21,7 +21,7 @@ function updateUser() {
         data: $(user_div).serialize(),
         success: function (result) {
             console.log(result);
-            if (result.code == 100) { //修改成功
+            if (result.code == 200) { //修改成功
                 userData=result.extend.user;
                 alertBox("保存成功", "success");
                 showMyModal("修改成功", "您的信息已修改成功！", null);

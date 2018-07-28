@@ -46,6 +46,7 @@
                 /check/** = anon
                 /static/** = anon
                 /user/login = anon
+                /user/register = anon
                 /user/user = login
             </value>
         </property>

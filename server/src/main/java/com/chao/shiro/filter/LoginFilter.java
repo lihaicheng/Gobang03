@@ -30,7 +30,6 @@ import java.util.Map;
  * @email so@sojson.com
  */
 public class LoginFilter extends AccessControlFilter {
-    final static Class<LoginFilter> CLASS = LoginFilter.class;
 
     @Override
     protected boolean isAccessAllowed(ServletRequest request,

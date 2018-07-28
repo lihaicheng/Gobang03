@@ -30,6 +30,7 @@ public class UserController {
 
     /**
      * * 更新用户信息
+     * <p>
      * 如果直接发送ajax=PUT形式的请求,获取不到数据
      * * 解决方案；
      * * 我们要能支持直接发送PUT之类的请求还要封装请求体中的数据
@@ -61,7 +62,7 @@ public class UserController {
     }
 
     /**
-     * 退出
+     * 用户注册
      *
      * @return
      */
@@ -73,16 +74,5 @@ public class UserController {
         } else {
             return Msg.fail().add("msg", user);
         }
-    }
-
-    /**
-     * 退出
-     *
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/no", method = RequestMethod.POST)
-    public Msg noUser() {
-        return Msg.fail().add("msg", "用户未登录");
     }
 }

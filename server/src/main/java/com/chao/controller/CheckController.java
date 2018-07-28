@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = "/check")
 @CrossOrigin(origins = "*", maxAge = 3600)
-public class UserCheckController {
+public class CheckController {
     @Autowired
     UserService userService;
 

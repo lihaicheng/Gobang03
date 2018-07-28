@@ -18,7 +18,7 @@ function regAjax() {
         data: reg_from.serialize(),
         success: function (result) {
             console.log(result);
-            if (result.code == 100) { //注册成功
+            if (result.code == 200) { //注册成功
                 $('#myModal').modal('show');
                 showMyModal("注册成功！", "你已注册成功，注册信息已发送道破你的邮箱。", function () {
                     window.location.href = _settings.html.userCenter;
@@ -62,7 +62,7 @@ function isHaveUsername(username) {
         },
         success: function (result) {
             console.log(result);
-            if (result.code == 100) { //账号未注册
+            if (result.code == 200) { //账号未注册
                 success("#username", 0);
             } else {
                 fail("#username", 0, result.extend.msg)

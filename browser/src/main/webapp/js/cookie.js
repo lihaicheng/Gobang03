@@ -1,5 +1,5 @@
 /**
- * cookie操作
+ * cookie操作(本项目中未涉及此文件，可删除)
  * @param c_name
  * @returns {string}
  */

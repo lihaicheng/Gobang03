@@ -103,7 +103,6 @@ public class UserService {
             userMapper.insertSelective(user);
             return true;
         } catch (Exception e) {
-
         }
         return false;
     }

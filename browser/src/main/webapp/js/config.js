@@ -13,7 +13,7 @@ _settings = {
         login: webServer + "/user/login",//用户登录接口地址
         logout: webServer + "/user/logout",//注销登录接口地址
         register: webServer + "/user/register",//用户注册接口(CRUD)
-        check: webServer + "/check"//，信息后端检验
+        check: webServer + "/check",//信息后端检验
     },
     html: {
         index: "index.html",

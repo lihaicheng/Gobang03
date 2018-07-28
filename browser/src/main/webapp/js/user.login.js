@@ -46,7 +46,7 @@ function ajaxLogin() {
         dataType: "json",
         success: function (result) {
             console.log(result);
-            if (result.code == 100) { //登陆成功
+            if (result.code == 200) { //登陆成功
                 showLogin_success();
                 window.location.href = _settings.html.userCenter;
             } else {

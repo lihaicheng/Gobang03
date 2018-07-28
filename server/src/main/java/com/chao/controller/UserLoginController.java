@@ -1,9 +1,7 @@
 package com.chao.controller;
 
 import com.chao.bean.Msg;
-import com.chao.bean.User;
 import com.chao.service.UserService;
-import com.chao.utils.LoggerUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -55,6 +53,5 @@ public class UserLoginController {
             return Msg.fail().add("logout", "退出出现错误！");
         }
     }
-
 
 }

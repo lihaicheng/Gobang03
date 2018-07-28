@@ -1,6 +1,5 @@
 package com.chao.shiro;
 
-import com.chao.bean.User;
 import com.chao.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -10,6 +9,9 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * 自定义权限认证(本项目中未使用到此类，使用shiro默认)
+ */
 
 public class CustomRealm extends AuthorizingRealm {
 

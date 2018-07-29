@@ -47,8 +47,8 @@ public class LoginFilter extends AccessControlFilter {
         //if (ShiroFilterUtils.isAjax(request)) {//
         Map<String, String> resultMap = new HashMap<String, String>();
         LoggerUtils.debug(getClass(), "当前用户没有登录，并且是Ajax请求！");
-        resultMap.put("code", "200");
-        resultMap.put("msg", "当前用户没有登录！");//当前用户没有登录！
+        resultMap.put("code", "403");
+        resultMap.put("msg", "shiro:当前用户没有登录！");//当前用户没有登录！
         ShiroFilterUtils.out(response, resultMap);
         //  }
 

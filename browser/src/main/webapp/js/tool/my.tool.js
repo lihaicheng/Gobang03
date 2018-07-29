@@ -8,7 +8,7 @@ $(function () {
     }
 });
 
-/* 提示框 */
+/* 显示提示框 */
 function alertBox(tip, color) {
     var box = $("<div></div>");
     $("#warningTip").remove();
@@ -21,11 +21,41 @@ function alertBox(tip, color) {
     $(my_alertBox).html(box);
 }
 
-//模态框
+//显示模态框
 function showMyModal(title, content, fun) {
     var myModal = $("#myModal");
     myModal.find("#title").text(title);
     myModal.find("#content").text(content);
     myModal.on('hide.bs.modal', fun);
     myModal.modal('show');
+}
+
+
+//加载模态框到指定div中
+function loadMyModal(modal_div) {
+    dynamicLoadJs("js/modal/myModal.html.js", function () {
+        console.log("加载模态框成功！");
+        $(modal_div).html(myModalUnicode);
+    });
+}
+
+/**
+ * 动态加载JS
+ * @param {string} url 脚本地址
+ * @param {function} callback  回调函数
+ */
+function dynamicLoadJs(url, callback) {
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    if (typeof(callback) == 'function') {
+        script.onload = script.onreadystatechange = function () {
+            if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") {
+                callback();
+                script.onload = script.onreadystatechange = null;
+            }
+        };
+    }
+    head.appendChild(script);
 }

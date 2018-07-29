@@ -1,3 +1,5 @@
+package com.chao.test;
+
 import com.chao.bean.User;
 import com.chao.service.UserService;
 import org.junit.Test;
@@ -17,9 +19,9 @@ public class UserLoginServiceTest {
     public void login() {
         User user = userService.login("chao","123456");
         if (user==null){
-            System.out.println("null");
+            System.out.println("null，登录失败！");
         }else {
-            System.out.println(user.getPassword());
+            System.out.println("登录成功，"+user.getPassword());
         }
     }
 

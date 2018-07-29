@@ -19,6 +19,9 @@ function getUserData() {
             if (result.code == 200) { //用户信息获取成功
                 userData = result.extend.user;
             }
+            if (result.code == 403) { //用户信息获取成功
+                userData = "";
+            }
         },
         complete: function () {
             //ajax请求完成，添加Tip标签，并触发点击事件

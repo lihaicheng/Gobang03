@@ -8,6 +8,16 @@ $(function () {
     }
 });
 
+//接收模态框加载完成事件消息
+$(document).on("click", myModal_div, function () {
+    //加载用户数据
+    //判断是否存在加载用户信息的方法
+    if (typeof getUserData == 'function') {
+        //模态框加载完成，则开始加载用户数据
+        getUserData();
+    }
+});
+
 /* 显示提示框 */
 function alertBox(tip, color) {
     $("#warningTip").remove();
@@ -34,11 +44,9 @@ function loadMyModal(modal_div) {
     dynamicLoadJs("js/modal/myModal.html.js", function () {
         console.log("加载模态框成功！");
         $(modal_div).html(myModalUnicode);
-        //判断是否存在加载用户信息的方法
-        if(typeof getUserData == 'function'){
-            //模态框加载完成，则开始加载用户数据
-           getUserData();
-        }
+
+        //发送模态框加载完成事件消息
+        $(modal_div).click();
     });
 }
 

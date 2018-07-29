@@ -1,5 +1,6 @@
 var user_div = "#user-info";//用户信息显示表单
 $(function () {
+    //用户提交事件处理
     $(user_div).find("#submit").click(function (e) {
         e.preventDefault();
         updateUser();
@@ -7,7 +8,7 @@ $(function () {
     alertBox("修改信息请输入原密码！<br/>留空则不修改原信息。", "success");
 });
 
-//这里监听后来元素事件
+//接收用户信息加载完成事件消息
 $(document).on("click", "#userdata_Tip", function () {
     show_user_bar();
     show_user_alter();

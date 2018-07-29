@@ -10,14 +10,12 @@ $(function () {
 
 /* 显示提示框 */
 function alertBox(tip, color) {
-    var box = $("<div></div>");
     $("#warningTip").remove();
-
+    var box = $("<div></div>");
     box.attr("id", "warningTip");
     box.attr("class", "alert alert-" + color + " alert-dismissible");
     box.attr("role", "alert");
     box.html("<button type='button' class='close' data-dismiss='alert' aria-label='Close'><spanaria-hidden='true'>&times;</span></button>" + tip);
-
     $(my_alertBox).html(box);
 }
 

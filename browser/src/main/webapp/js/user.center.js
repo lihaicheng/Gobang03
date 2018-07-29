@@ -6,11 +6,7 @@ $(document).on("click", "#userdata_Tip", function () {
 });
 
 function show_user_center() {
-    if (userData == null || userData.length == 0) {
-        showMyModal("提示！", "您未登录，无法进行此操作，请先登录。", function () {
-            //跳转到登录页面
-            window.location.href = _settings.html.login;
-        });
+    if (!isLoginAndShow()) {
         return;
     }
     $(user_div).find("#username").text(userData.username);

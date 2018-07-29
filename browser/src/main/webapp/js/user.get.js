@@ -1,10 +1,13 @@
 /*加载用户数据*/
 var userData = "";//用户数据
 var userTip = $("<div></div>").attr('id', "userdata_Tip");//利用动态元素标识，告知其它JS方法数据信息加载完毕。
+
 $(function () {
+    //加载用户数据
     getUserData();
 });
 
+//用户退出登录
 $(".loginOut").click(function () {
     loginOut();
 });
@@ -18,14 +21,14 @@ function getUserData() {
             console.log(result);
             if (result.code == 200) { //用户信息获取成功
                 userData = result.extend.user;
-            }
-            if (result.code == 403) { //用户信息获取成功
+            } else if (result.code == 403) { //用户信息获取成功
                 userData = "";
             }
         },
         complete: function () {
             //ajax请求完成，添加Tip标签，并触发点击事件
             userTip.appendTo($("body"));
+            //发送消息，告知数据用户加载完成
             userTip.click();
         }
     });
@@ -60,5 +63,17 @@ function loginOut() {
             }
         }
     });
+}
+
+function isLoginAndShow() {
+    if (userData == null || userData.length == 0) {
+        console.log("用户未登录！");
+        showMyModal("提示！", "您未登录，无法进行此操作，请先登录。", function () {
+            //跳转到登录页面
+            window.location.href = _settings.html.login;
+        });
+        return false;
+    }
+    return true;
 }
 

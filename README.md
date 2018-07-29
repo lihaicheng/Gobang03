@@ -17,6 +17,7 @@
 ### 3，Browser端：用户中心界面，注册，修改信息等
         Query, Ajax, BootStrap
         JQuery：validate表单验证，qrcode二维码生成
+        异步加载html中重复的代码；能够使用资源管理器以file:协议打开
 
 ### 3，Client端：下棋客户端，进行游戏，聊天等
         Okhttp3, Gson, Swing+AWT, Socket

@@ -2,11 +2,6 @@
 var userData = "";//用户数据
 var userTip = $("<div></div>").attr('id', "userdata_Tip");//利用动态元素标识，告知其它JS方法数据信息加载完毕。
 
-$(function () {
-    //加载用户数据
-    getUserData();
-});
-
 //用户退出登录
 $(".loginOut").click(function () {
     loginOut();

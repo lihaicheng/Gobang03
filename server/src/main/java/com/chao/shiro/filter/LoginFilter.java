@@ -45,9 +45,9 @@ public class LoginFilter extends AccessControlFilter {
         System.out.println("当前请求：" + request.getServerName());
         // 判断是否是ajax请求，但是，跨域请求时，无法正确判断，X-Requested-With: XMLHttpRequest
         //if (ShiroFilterUtils.isAjax(request)) {//
-        Map<String, String> resultMap = new HashMap<String, String>();
+        Map<String, Object> resultMap = new HashMap<>();
         LoggerUtils.debug(getClass(), "当前用户没有登录，并且是Ajax请求！");
-        resultMap.put("code", "403");
+        resultMap.put("code", 403);
         resultMap.put("msg", "shiro:当前用户没有登录！");//当前用户没有登录！
         ShiroFilterUtils.out(response, resultMap);
         //  }

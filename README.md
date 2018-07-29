@@ -11,26 +11,36 @@
 
 ## 一，各模块说明：
 
-### 1，Server端：使用RESTful风格，生成远程API接口
-        Spring, SpringMVC, MyBatis, Shiro
-        Mybatis：MyBatis逆向工程
+ ### 1，Server端：使用RESTful风格，生成远程API接口
+        SSM框架：Spring, SpringMVC, MyBatis
+        权限控制：Shiro单点登录控制
+        MyBatis：mybatis-generator逆向工程
         过滤器设置：码过滤器>> RESTful过滤器>> CORS跨域过滤器>> Shiro权限过滤器
 
-### 3，Browser端：用户中心界面，注册，修改信息等
-        Query, Ajax, BootStrap
-        JQuery：validate表单验证，qrcode二维码生成
-        异步加载html中重复的代码；能够使用资源管理器以file:协议打开
+ ### 3，Browser端：用户中心界面，注册，修改信息等
+        纯静态页面：HTML，CSS，jQuery, Ajax, BootStrap
+        JQuery插件：validate表单验证，qrcode二维码生成
+        异步加载html中重复的代码；能够直接用资源管理器以file:协议打开
 
-### 3，Client端：下棋客户端，进行游戏，聊天等
+ ### 3，Client端：下棋客户端，进行游戏，聊天等
         Okhttp3, Gson, Swing+AWT, Socket
-  
+        使用原Gobang02源代码，未更改本模块代码，如需相关代码，请查看Gobang V02
+        
 ## 二，前后断分离及跨域 
  ### 1，异步加载html代码
         由于采用纯Html+CSS+JavaScript的方式，html页面代码会有很多的重复性。因此将部分html代码使用异步加载的方式加载到的html页面中。
  ### 2，跨域加载html代码
         为了解决跨域问题，将模态框的html代码转换成Unicode编码存储在html.js文件中，通过动态加载js文件方式加载Unicode数据。
         (在非跨域的项目中，可以直接使用Ajax的方式加载到页面中)
-### 3.读取异步加载的数据
+ ### 3.读取异步加载的数据
         由于很多数据是异步加载的，因此数据的读取也是异步的。本项目采用后来元素事件绑定法，来发送事件（数据加载完成）完成消息
-        $(modal_div).click();//发送事件消息，告知模态框加载完成！
+        
+        //发送事件消息，告知用户信息加载完成！
+         $("#userdata_Tip").click();
+         
+        //接收事件消息，处理用户信息
+        $(document).on("click", "#userdata_Tip", function () {
+                show_user_bar();
+                show_user_center();
+        });
 

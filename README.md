@@ -9,8 +9,9 @@
 
         成都工业学院 15级软件工程 学生作品  2018.07.26-2018.07.29
         此版本基于上一版本：Gobang v02 https://github.com/bzsome/Gobang02
-        即将迎来下一版本：Gobang v04，采用Spring Boot构架
-
+## 下一版本：Gobang v04
+        采用Spring Boot构架，标准的RESTful-api风格，OAuth2.0授权接口
+        
 ## 一，各模块说明：
 
  ### 1，Server端：使用RESTful风格，生成远程API接口

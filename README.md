@@ -19,7 +19,7 @@
         SSM框架：Spring, SpringMVC, MyBatis
         权限控制：Shiro单点登录控制
         MyBatis：mybatis-generator逆向工程
-        过滤器设置：码过滤器>> RESTful过滤器>> CORS跨域过滤器>> Shiro权限过滤器
+        过滤器设置：编码过滤器>> RESTful过滤器>> CORS跨域过滤器>> Shiro权限过滤器
 
  ### 2，Browser端：用户中心界面，注册，修改信息等
         纯静态页面：HTML，CSS，jQuery, Ajax, BootStrap

@@ -10,8 +10,8 @@
         成都工业学院 15级软件工程 学生作品  2018.07.26-2018.07.29
         此版本基于上一版本：Gobang v02 https://github.com/bzsome/Gobang02
 ## 下一版本：Gobang v04
-        采用Spring Boot构架，标准的RESTful-api风格，OAuth2.0授权接口
-        前后端分离后，授权认证较为复杂，最近正在积累授权安全相关知识。
+        采用Spring Boot构架，标准的RESTful-api风格，JWT生成token授权(OAuth2.0授权正在学习)
+        前后端分离后，授权认证较为复杂，正在积累授权安全相关知识，争取下一次使用OAuth2.0协议授权
         
 ## 一，各模块说明：
 

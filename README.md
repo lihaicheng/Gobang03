@@ -5,13 +5,16 @@
 
 系统构架：BS/CS混合构架
 
+本项目不再更新，请查看Gobang v04版本 https://github.com/bzsome/Gobang04
+
 前后端完全分离，各模块可独立开发
 
         成都工业学院 15级软件工程 学生作品  2018.07.26-2018.07.29
         此版本基于上一版本：Gobang v02 https://github.com/bzsome/Gobang02
+   
 ## 下一版本：Gobang v04
-        采用Spring Boot构架，标准的RESTful-api风格，JWT生成token授权(OAuth2.0授权正在学习)
-        前后端分离后，授权认证较为复杂，正在积累授权安全相关知识，争取下一次使用OAuth2.0协议授权
+        SSO单点登录系统 + Netty即时通信服务 + Web用户界面 + 客户端用户界面
+        前后端完全分离，SSM框架，CORS跨域访问，SSO单点登录，Bootstrap界面，RESTful构架风格，Netty即时通信，Token口令授权
         
 ## 一，各模块说明：
 
